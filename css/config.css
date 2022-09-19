@@ -1,0 +1,74 @@
+.config-panel {
+    width: 50%;
+    margin: auto auto 5vw auto;
+    text-align: center;
+}
+
+.config-panel .acc-mod:nth-child(1), .config-panel .acc-mod:nth-child(2) {
+    display: inline-flex;
+    height: 225px;
+    width: auto;
+    margin: auto 12px;
+}
+
+.config-panel .acc-mod:nth-child(1) .form-element > *, .config-panel .acc-mod:nth-child(2) .form-element > * {
+    width: auto !important;
+    display: block;
+    margin: 10px auto auto auto;
+}
+
+.config-panel .acc-mod:nth-child(1) .form-element :not(input[type="submit"]), .config-panel .acc-mod:nth-child(2) .form-element :not(input[type="submit"]) {
+    margin-top: 5px;
+}
+
+
+.form-element {
+    margin: 0.5vw 2%;
+}
+
+.form-element > *{
+    width: 35%;
+    display: block;
+    margin: auto;
+}
+
+.pass-form > div:not(div:first-child) {
+    display: flex;
+}
+
+.pass-form > div:not(div:first-child) * {
+    text-align: right;
+}
+
+@media (max-width: 480px) { 
+
+    .pass-form > div:not(div:first-child) {
+        display: initial;
+        text-align: center;
+    }
+
+    .config-panel .acc-mod:nth-child(1), .config-panel .acc-mod:nth-child(2) {
+        height: auto;
+    }
+
+    .config-panel .acc-mod:nth-child(1) .form-element > *, .config-panel .acc-mod:nth-child(2) .form-element > * {
+        margin: auto;
+    }
+
+    .pass-form > div:not(div:first-child) * {
+        text-align: center !important;
+      }
+
+    .form-element > * {
+        width: 75%;
+    }
+
+    input[type="submit"] {
+        margin-top: 2em;
+    }
+
+    .config-panel:last-child{
+        margin-bottom: 5em;
+    }
+
+}

@@ -1,0 +1,64 @@
+.add-form form {
+    /* width: 50%; */
+    width: 75%;
+    height: 75%;
+    margin: auto;
+    margin-top: 7.5%;
+    text-align: center;
+}
+
+.add-form form > *:not(:first-child), .add-form form > *:not(:last-child) {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.from-to, .date-hour{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-business {
+    position: relative;
+}
+
+.add-from form input, .add-form form label {
+    display: block;
+}
+
+.add-form form input[type=submit]{
+    display: block;
+    width: 25%;
+    margin-left: 37.5%;
+    margin-top: 2em;
+}
+
+.client-business {
+    position: relative;
+}
+
+@media (max-width: 480px) {
+
+    .add-form form {
+        width: 75%;
+        margin-top: 0px;
+    }
+
+    .add-form form > div:first-child {
+        margin-top: 0px;
+        padding-top: 10px;
+    }
+
+    .from-to, .date-hour {
+        display: block;
+    }
+
+    .add-form form > *:not(:first-child), .add-form form > *:not(:last-child) {
+        width: auto;
+    }
+
+    .add-form form > input[type="submit"]{
+        display: initial;
+        width: auto;
+        margin: 50px auto auto auto;
+    }
+}

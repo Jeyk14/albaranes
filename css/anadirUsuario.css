@@ -1,0 +1,19 @@
+.newuser-options form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 75%;
+    margin: 7.5% auto auto auto;
+}
+
+.newuser-info, .newuser-data {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.newuser-info div, .newuser-data div {
+    display: flex;
+    flex-direction: column;
+}

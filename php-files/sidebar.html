@@ -1,0 +1,45 @@
+<div class="sidebar" id="sidebar">
+    <ul>
+        <a href="home.php">
+            <li class="selected"><p>Home</p></li>
+        </a>
+
+        <a href="anadir.php">
+            <li class="selected"><p>Añadir registro</p></li>
+        </a>
+
+        <a href="lista.php">
+            <li><p>Gestionar registros</p></li>
+        </a>
+
+        <a href="clientes.php">
+            <li><p>Añadir cliente</p></li>
+        </a>
+
+        <a href="listaClientes.php">
+            <li><p>Gestionar clientes</p></li>
+        </a>
+
+        <?php if(strcmp($level,'adm') == 0){ ?>
+        
+            <a href="crearUsuario.php">
+                <li><p>Añadir usuario</p></li>
+            </a>
+            
+            <a href="listaUsuario.php">
+                <li><p>Gestionar Usuarios</p></li>
+            </a>
+
+        <?php } ?>
+
+        <a href="config.php">
+            <li class="config" id="config">
+                <img src="img/cog.png" class="icon-img"/><p>Ajustes</p>
+            </li>
+        </a>
+    </ul>
+</div>
+
+<button style="display:none;" id="toggle-menu">
+    Ocultar
+</button>

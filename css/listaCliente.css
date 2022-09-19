@@ -1,0 +1,23 @@
+.row-data {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.row-data .client-name {
+    width: 50%;
+}
+
+.client-name h3, .client-name p {
+    margin: 0px;
+}
+
+.row-data .last-mod {
+    width: 50%;
+}
+
+.row-data .client-id {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}

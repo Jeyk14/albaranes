@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(Demo) Title</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/login.css">
+
+</head>
+
+<body style="background-color: rgb(141, 137, 147); background-image: none !important;">
+
+
+    <div id="signature-pad" class="signature-pad">
+        <div class="signature-pad--body">
+            <canvas width="200px" height="150px"></canvas>
+        </div>
+        <div class="signature-pad--footer">
+
+            <div class="signature-pad--actions">
+                <div>
+                    <button type="button" class="button clear" data-action="clear">Clear</button>
+                    <button type="button" class="button" data-action="undo">Undo</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+    <script> // app.js
+
+        // Notes
+        /*
+            To store/retrieve the signature as SVG
+            Store as sql LongBlob? text? and php as 
+                source of <img> = header("Content-type: image/svg+xml");
+            To store the signature as PNG, JPEG
+                source of <img> = header("");
+        */
+
+        var wrapper = document.getElementById("signature-pad"); // The signature pad
+        var clearButton = wrapper.querySelector("[data-action=clear]"); // Delete the signature
+        var undoButton = wrapper.querySelector("[data-action=undo]"); // Undo the last stroke
+        // var savePNGButton = wrapper.querySelector("[data-action=save-png]");
+        // var saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
+        var saveSVGButton = wrapper.querySelector("[data-action=save-svg]"); //Save as SV -> target = database
+        var canvas = wrapper.querySelector("canvas"); // The drawing area
+
+        // Instanciate and iniciate the signature pad
+        var signaturePad = new SignaturePad(canvas, {
+            dotSize: 1,
+            maxWidth: 1.25,
+            backgroundColor: 'rgb(255, 255, 255)' //Optional for PNG and SVG
+        });
+
+        // Adapt the canvas size
+        function resizeCanvas() {
+            var ratio = Math.max(window.devicePixelRatio || 1, 1);
+
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            canvas.getContext("2d").scale(ratio, ratio);
+
+            signaturePad.clear();
+        }
+
+        //change the size of the canvas to better fit mobile screens
+        window.onresize = resizeCanvas;
+        resizeCanvas();
+
+        // Skipped, the user wont download anything but instead upload to the database
+        // function download(dataURL, filename) {}
+
+        clearButton.addEventListener("click", function (event) {
+            signaturePad.clear();
+        });
+
+        /*
+            How undo workd (in general):
+                Every action is stored in a LIFO colection (a pile of elements) where every change made is stored
+                "one on top of another". Using undo removes the action on top of the collection, leaving you with
+                all actions but the last one
+
+                Example:    A deck of cards
+                            You know the card you want is 3 cards under. You remove (undo)
+                            the 2 cards above to end with the card you wanted and
+                            forgetting about the cards (actions) you just tossed away (undoned)
+        */
+        undoButton.addEventListener("click", function (event) {
+            var data = signaturePad.toData();
+
+            if (data) {
+                data.pop(); // remove the last dot or line
+                signaturePad.fromData(data);
+            }
+        });
+
+    </script>
+
+    <!-- --------------------------------------------------------------------------------- -->
+    <!-- siempre me hago un cacao con los estilos de titulos, asi que hice una demo-->
+
+    <h1>Title 1</h1>
+    <h2>Title 2</h2>
+    <h3>Title 3</h3>
+    <h4>Title 4</h4>
+    <h5>Title 5</h5>
+    <h6>Title 6</h6>
+
+    <p>Simple text paragraph</p>
+
+    <p>
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi porta, tellus at ultricies rutrum, augue ante
+        eleifend eros, id consectetur augue libero eu ligula. Integer hendrerit semper metus, eget malesuada magna
+        congue et. Phasellus vestibulum mauris at cursus tincidunt. Phasellus ac condimentum erat, id tincidunt mi.
+        Maecenas et ipsum auctor, auctor lacus sed, molestie massa. Duis faucibus risus sed volutpat viverra. Donec
+        ultrices enim nec dolor tempor, ac tincidunt purus ornare. Vestibulum ante ipsum primis in faucibus orci luctus
+        et ultrices posuere cubilia curae; Praesent tincidunt, nibh sed lobortis maximus, lacus ipsum accumsan nisi, non
+        lobortis elit lorem id ipsum. Donec id nulla sapien.<br /><br />
+
+        Donec vel malesuada orci. Donec ut diam risus. <span>Aliquam hendrerit finibus nibh</span>, ac varius elit
+        accumsan pharetra.
+        Aenean facilisis rutrum magna. Duis ultricies nec eros sit amet mollis. Suspendisse vitae felis quam. Aliquam
+        erat volutpat. Etiam massa nibh, commodo non posuere ut, rutrum vel risus. Aenean quis tempor nisl. Aenean vitae
+        congue ante.<br /><br />
+
+        Morbi porttitor tempus lectus volutpat accumsan. Donec ullamcorper arcu tincidunt consequat vulputate. Morbi
+        aliquet elit vel elit vulputate condimentum. Vivamus cursus suscipit enim, et semper odio. Donec vel
+        pellentesque metus, id sollicitudin augue. Ut rutrum urna tellus, in ultrices diam finibus id. Integer elementum
+        consectetur odio in scelerisque. Suspendisse dictum malesuada interdum. Praesent elementum ut elit ut pharetra.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla nunc, tempor eget porta et, porttitor non
+        nisi. Etiam eu risus et est sodales laoreet ornare et massa. Vivamus id imperdiet ante. Fusce placerat est a
+        augue convallis dignissim. Quisque aliquam, dui eu maximus maximus, nisl ligula porta arcu, sit amet lacinia
+        sapien quam a libero. </p>
+
+    <hr />
+
+    <button>Button</button>
+
+    <button class="fancy-button">Fancy button</button>
+
+    <form>
+
+        <input type="text" name="text" placeholder="text"><br />
+
+        <input type="password" name="password" placeholder="password"><br />
+
+        <input type="email" name="email" placeholder="email"><br />
+
+        <input type="file" name="file" value="file"><br />
+
+        <label for="number">Number</label>
+        <input type="number" name="number" value="1"><br />
+
+        <input type="button" name="button" value="Input button"><br />
+
+        <label for="colot">Color</label>
+        <input type="color" name="color"><br />
+
+        <label for="date">Date</label>
+        <input type="date" name="date"><br />
+
+        <label for="time">Time</label>
+        <input type="time"><br />
+
+        <label for="datetime">Datetime</label>
+        <input type="datetime" name="datetime"><br />
+
+        <input type="url" placeholder="url"><br />
+
+        <label for="range">Range</label>
+        <input type="range" name="range"><br /> <!-- TODO investigar-->
+
+        <input type="submit" value="Submit"><br />
+
+    </form>
+
+</body>
+
+</html>

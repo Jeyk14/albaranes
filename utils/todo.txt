@@ -1,0 +1,119 @@
+--------------------------::::: URGENTE :::::--------------------------
+
+- Añadir creación de usuario
+- Añadir lista de usuarios
+- Añadir modificación de usuario
+- No dejar que un usuario no administrador acceda desde la URL al gestor de usuarios
+- Permitir editar el usuario en modificar registro (sólo ADM)
+
+- El campo de firma se borra (no pierde los datos, solo se pone en blanco) en mobile al hacer scroll
+    Cuando en mobile se hace scroll hacia abajo se oculta la barra de URL, esto causa un cambio del tamaño del viewport forzando
+    que el canvas se redimensione (aunque visualmente no haya diferencia) y que su contenido se borre. No se como solucionarlo
+
+--------------------------::::: PENDIENTE :::::--------------------------
+
+- Añadir recordar contraseña (requiere servicio de correo o una alternativa)
+- En caso de error en anadir.php, mantener los campos rellenos (añadir el botón limpiar formulario) 
+- Añadir comprobaciones de los campos fecha y hora en modificar en crear registro. Que no se rompa si el usuario modifica el HTML
+- Añadir comprobaciones de los campos fecha y hora en modificar en modificar. Que no se rompa si el usuario modifica el HTML
+
+--------------------------::::: Solucionado :::::--------------------------
+
+- Permitir que ADM acceda a todo
+- Que un usuario SOLO pueda borrar sus propios registros
+- Añadir nivel de usuario administrador y colaborador (colaborador = col / administrador = adm)
+- Que sólo el administrador pueda BORRAR clientes
+- Cambiar el ID de registro por el nombre del usuario al que pertenece el registro
+
+- Añadir un cliente rompe la página
+    ¿¿¡SE ME HA OLVIDADO LA CLAVE PRIMARIA Y EL AUTOINCREMENTAL!??
+- Añadir un espacio entre los campos de empresa, cliente y direccion en añadir/modificar registro
+- Mensaje de registro añadido aparece descentrado en mobile
+- Comporbar cómo es el campo de firma en dispositivos moviles
+- Listar y modificar en mobile se ve la firma demasiado grande
+- En mobile, el espacio de firma es muy pequeño
+- Al estar en la primera página el botón de págna anterior es pulsable
+- En mobile, el textArea de la lista de clientes se vuelve demasiado pequeño
+- Cambiar de página en cliente te lleva a registro
+- Alinear el dropdown de todos los buscadores de empresa
+
+- Añadir el autocompletar empresa a Añadir cliente
+- Añadir botón de añadir/modificar clientes
+- (Importante) Deberias añadir un apartado para introducir nuevos clientes y modificar los existentes
+- Hacer que en modificar y añadir registro, el cliente y la empresa sea un selector de las empresas y clientes existentes
+- Cambiar los input de nombre de cliente y empresa a un selector en añadir/modificar registro
+- En añadir/modificar registro cambiar el input de cliente por un selector con los posibles clientes
+
+- Separar la tabla de clientes de la tabla de registros
+- Buscar por elementos pasados lleva a una página en blanco
+- (Importante) Al firmal, donde se dibuja y donde está el ratón no son el mismo sitio
+- (Importante) Renombra el apartado listar, a listar/modificar
+- (Despliegue) Al rellenar el formulario correctamente el usuario termina en una pág. en blanco. (añadir exit() despues de header() ???)
+    (Resulta que utilizaba una version distinta)
+
+- Añadir un registro a la BD para insertar una firma. https://github.com/szimek/signature_pad
+- Planear como insertar la firma en POST del formulario (pruebas en utils/demoSign.php)
+
+- Añadir el autocompletar empresa a anadir.php y modificar.php
+- El autocompletar duplica resultados 
+
+- El botón de siguiente siempre está activo en la primera página aunque no hayan resultados
+- Cambiar el ATROZ diseño de la página de configuración
+- En el buscador no pasa nada al pulsar el botón de página siguiente
+- Evitado error al abusar de las comillas simples, dobles y francesas
+- Prohibir al usuario utilizar los caracteres % y " y notificar al usuario de que no los utilice
+- Revisar los campos en el formualario de añadir registro
+- Testear los campos de los formularios de login, añadir, modificar y listar
+- (Chrome) En mobile los campos del formulario login son muy largos
+
+- La lista de elementos para autocompletar en el buscador no está alineada en Chrome y Edge
+- Utilizar comillas simples en el buscador de empresa rompe el buscador (rompe el JQuery)
+- El botón de configuración no se ve bien
+
+- Alguna regla CSS ha roto el buscador de empresas
+- Añadir diseño responsivo a la página
+- Configuración responsivo
+- Al abrir el teclado en pantalla hacer scroll para que el input seleccionado siempte esté visible (Solucionado???)
+
+- Header responsivo
+- Añadir registro responsivo
+- Modificar registro responsivo
+- Inicio responsivo
+
+- Login responsivo
+- Poder autocompletar usando las flechas de dirección y pulsando enter
+- El buscador se rompe al utilizar comilla simple
+- Modificar registro es vulnerable a inyecciones SQL
+- Cambiar contraseña no funciona aunque escriba bien las contraseñas
+
+- Config cuenta es muy vulnerable a inyecciones SQL
+- La configuracion se rompe al utilizar comilla simple en cualquier formulario
+- La página de modificar es vulnerable a inyecciones SQL
+- La página de modificar se rompe al utilizar comilla simple
+- El formulario de añadir registro se rompe al utilizar comilla simple
+- El buscador es vulnerable a inyecciones SQL
+- Login se rompe al utilizar comilla simple
+
+- Login vulnerable a inyecciones SQL
+- Añadir mensaje de error cuando la base de datos no está disponible
+- Cuando hay un error de SQL la página se rompe
+- Que en lista.php aparezca un mensaje si la búsqueda no ha retornado ningún resultado
+
+- Configuración del usuario conectado y cambiar correo/contraseña
+- Cuando la base de datos no está disponible el diseño del index se rompe
+- El usuario puede poner el número de página a 0 o negativo en la URL para causar un error
+- Poder autocompletar haciendo clic
+- Añadir al buscador la función de mostrar los nombres sugeridos mientras se busca
+- Al utilizar el filtro de fecha y el filtro por palabra, la consulta no tiene AND y da error
+- Testear la función de cerrar sesión y comprobar que no se me olvida un atributo de sesion
+- Hacer funcionar los botones de pagina siguiente y página anterior en el lista.php
+- Impedir que al pulsar le boton de pagina siguiente se vaya a una página sin resultados
+- Añadir estilo a los botones de anterior y siguiente en la página de lista.php
+- Cuando el login falla el estilo del login se rompe por el mensaje de error
+- Convertir el header en un htlm importable con PHP
+- Si el usuario no está logeado, que se le devuelva al login
+- Implementar las sesiones en la aplicación
+- Añadir el nombre del usuario iniciado en el header
+- Añadir el nombre del usuario al que pertenece el registro en la página de modificar y añadir
+- Añadir en lista.php un bloque que indique los parámetros de búsqueda activos
+- Usar atributos de sesion para recordar los parámetros de búsqueda
